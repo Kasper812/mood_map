@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Weather Map</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+    
+    <div class="notification" id="notification"></div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="title">
+                <i class="fas fa-cloud-sun-rain" style="font-size: 3rem; color: #667eea;"></i>
+                <h1>Mood Weather Map</h1>
+            </div>
+            <p class="subtitle">Карта настроений городов в реальном времени. Цвета и иконки показывают эмоциональный фон.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card" style="border-left-color: #FF6B6B;">
+                    <div class="stat-value" id="city-count">0</div>
+                    <div class="stat-label">Городов в анализе</div>
+                </div>
+                <div class="stat-card" style="border-left-color: #4ECDC4;">
+                    <div class="stat-value" id="avg-mood">0.0</div>
+                    <div class="stat-label">Среднее настроение</div>
+                </div>
+                <div class="stat-card" style="border-left-color: #45B7D1;">
+                    <div class="stat-value" id="total-posts">0</div>
+                    <div class="stat-label">Всего сообщений</div>
+                </div>
+                <div class="stat-card" style="border-left-color: #96CEB4;">
+                    <div class="stat-value" id="sunny-cities">0</div>
+                    <div class="stat-label">Солнечных городов</div>
+                </div>
+                <div class="stat-card" style="border-left-color: #DDA0DD;">
+                    <div class="stat-value" id="rainy-cities">0</div>
+                    <div class="stat-label">Дождливых городов</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn" onclick="updateAll()">
+                    <i class="fas fa-sync-alt"></i> Обновить все
+                </button>
+                <button class="btn" onclick="loadData()">
+                    <i class="fas fa-download"></i> Загрузить данные
+                </button>
+                <button class="btn" onclick="alert('Mood Weather Map - демо версия\n\nКарта показывает настроение городов на основе анализа сообщений.\n\n☀️ - позитивное настроение\n🌧️ - негативное настроение\n\nДанные обновляются автоматически каждые 30 секунд.')">
+                    <i class="fas fa-info-circle"></i> О проекте
+                </button>
+            </div>
+        </header>
+        
+        <main class="main-content">
+            <div class="cities-panel">
+                <h2 style="margin-bottom: 20px; color: #667eea;">
+                    <i class="fas fa-city"></i> Города
+                </h2>
+                <div class="city-list" id="city-list"></div>
+            </div>
+            
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="legend">
+                    <h4 style="margin-bottom: 10px;">Легенда</h4>
+                    <div class="legend-item">
+                        <div style="width: 20px; height: 20px; background: #FFD700; border-radius: 4px;"></div>
+                        <span>☀️ Солнечно (позитивно)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div style="width: 20px; height: 20px; background: #78909C; border-radius: 4px;"></div>
+                        <span>☁️ Облачно (нейтрально)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div style="width: 20px; height: 20px; background: #546E7A; border-radius: 4px;"></div>
+                        <span>🌧️ Дождь (негативно)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div style="width: 20px; height: 20px; background: #37474F; border-radius: 4px;"></div>
+                        <span>⛈️ Гроза (очень негативно)</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>Mood Weather Map © 2024 | Демо версия | Данные обновляются в реальном времени</p>
+            <p><small>Анализ настроения городов на основе социальных данных</small></p>
+        </footer>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
