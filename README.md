@@ -17,7 +17,7 @@
 ## Быстрый старт
 
 ```bash
-#cd mood_weather_map
-#pip install -r requirements.txt
-#python app.py
-#http://localhost:5000
+cd mood_weather_map
+pip install -r requirements.txt
+python app.py
+http://localhost:5000
